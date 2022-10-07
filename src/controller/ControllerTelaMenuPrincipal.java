@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 
+import model.Promocao;
 import view.TelaCadastro;
 import view.TelaEstoque;
 import view.TelaMenuPrincipal;
@@ -62,7 +63,9 @@ public class ControllerTelaMenuPrincipal {
 			if(e.getSource().equals(tela.getPromocaoButton())){
 				new ControlerTelaPromo(ControllerTelaMenuPrincipal.promo);
 			}
-			if(e.getSource().equals(tela.getRodarPromocaoButton())){System.out.println("rodar promoção");}
+			if(e.getSource().equals(tela.getRodarPromocaoButton())){
+			Promocao promo = new Promocao();
+			promo.start();}
 
 		}
 

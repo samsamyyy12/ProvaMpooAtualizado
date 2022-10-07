@@ -12,6 +12,9 @@ public class BaseDados {
 
 	public static void createBase(){
 		produtos = new ArrayList<Produto>();
+		produtos.add(new Produto(001, "Pinga sertão"));
+		produtos.add(new Produto(002, "Feijão"));
+		produtos.add(new Produto(003, "Picanha"));
 	}
 	public static boolean adicionarProduto(Produto produto) throws DuplicatedProductException{
 		boolean status=false;

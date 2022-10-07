@@ -12,6 +12,7 @@ import model.DuplicatedProductException;
 import model.Produto;
 import model.ProdutoNaoExisteException;
 import model.ProdutoNullException;
+import model.Promocao;
 import view.MensagemErroView;
 import view.MensagemView;
 import view.TelaCadastro;
@@ -25,17 +26,16 @@ public class App {
 
 	public static void main(String[] args) {
 		BaseDados.createBase();
-		
+
 		Produto produto = new Produto(0,"algo");
 		try {
 			BaseDados.adicionarProduto(produto);
 		} catch (DuplicatedProductException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-	}
+		}
 		new  ControllerTelaMenuPrincipal(new TelaMenuPrincipal(), new TelaCadastro(), new TelaEstoque(), new TelaPreco(), new TelaPromocao());
-		
 		//new TelaCadastro();
 		//new ControlerTelaCadastro();
- }
+	}
 }

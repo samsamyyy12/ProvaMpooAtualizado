@@ -6,6 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
+import model.BaseDados;
+import model.DuplicatedProductException;
+import model.Produto;
+import model.ProdutoNaoExisteException;
 import view.MensagemErroView;
 import view.MensagemView;
 import view.TelaCadastro;
@@ -36,7 +40,18 @@ public class ControlerTelaCadastro implements ActionListener{
 				new MensagemView("Preencha tudo","Atenção");
 			}
 			else {
-				new MensagemView("entrou", "atenção");
+				tela.getButtonOk().setEnabled(false);
+				try {
+					if (tela.getComboPerecivel().isEnabled()) {
+						System.out.println("entrou");
+					}
+					Produto produto = new Produto(Integer.parseInt(tela.getFieldCodBarras().getText()), tela.getFieldNome().getText());
+					BaseDados.adicionarProduto(produto);
+					BaseDados.pesquisarProduto(produto.getCodBarras());
+					
+				} catch (NumberFormatException | DuplicatedProductException | ProdutoNaoExisteException e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 
